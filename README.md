@@ -1,2 +1,2 @@
 # Python_Projects
-This Repository contains all my Python Projects from Beginner to Advanced level.
+This Repository contains all my Python Projects from Basic to Advanced level.
