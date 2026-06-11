@@ -1,0 +1,123 @@
+logo = r"""
+ _____________________
+|  _________________  |
+| | Pythonista   0. | |  .----------------.  .----------------.  .----------------.  .----------------. 
+| |_________________| | | .--------------. || .--------------. || .--------------. || .--------------. |
+|  ___ ___ ___   ___  | | |     ______   | || |      __      | || |   _____      | || |     ______   | |
+| | 7 | 8 | 9 | | + | | | |   .' ___  |  | || |     /  \     | || |  |_   _|     | || |   .' ___  |  | |
+| |___|___|___| |___| | | |  / .'   \_|  | || |    / /\ \    | || |    | |       | || |  / .'   \_|  | |
+| | 4 | 5 | 6 | | - | | | |  | |         | || |   / ____ \   | || |    | |   _   | || |  | |         | |
+| |___|___|___| |___| | | |  \ `.___.'\  | || | _/ /    \ \_ | || |   _| |__/ |  | || |  \ `.___.'\  | |
+| | 1 | 2 | 3 | | x | | | |   `._____.'  | || ||____|  |____|| || |  |________|  | || |   `._____.'  | |
+| |___|___|___| |___| | | |              | || |              | || |              | || |              | |
+| | . | 0 | = | | / | | | '--------------' || '--------------' || '--------------' || '--------------' |
+| |___|___|___| |___| |  '----------------'  '----------------'  '----------------'  '----------------' 
+|_____________________|
+"""
+def add(n1, n2):
+    return n1 + n2
+
+def subtract(n1, n2):
+    return n1 - n2
+
+def multiply(n1, n2):
+    return n1 * n2
+
+def divide(n1, n2):
+    if n2 == 0:
+        raise ZeroDivisionError("Cannot divide by zero!")
+    return n1 / n2
+
+def modulus(n1, n2):
+    if n2 == 0:
+        raise ZeroDivisionError("Cannot mod by zero!")
+    return n1 % n2
+
+def power(n1, n2):
+    return n1 ** n2
+
+operations = {
+    "+": add,
+    "-": subtract,
+    "*": multiply,
+    "/": divide,
+    "%": modulus,
+    "^": power,
+}
+
+history = []
+
+def show_history():
+    if not history:
+        print("\n  No calculations yet.\n")
+    else:
+        print("\n--- History ---")
+        for i, entry in enumerate(history, 1):
+            print(f"  {i}. {entry}")
+        print()
+
+def clear_history():
+    history.clear()
+    print("\n  History cleared.\n")
+
+def calculator():
+    print(logo)
+
+    while True:
+        # Get First Number
+        try:
+            num1 = float(input("What is the first number?: "))
+        except ValueError:
+            print("  Invalid number. Try again.\n")
+            continue
+
+        should_accumulate = True
+
+        while should_accumulate:
+            print("\n  + Add   - Subtract   * Multiply   / Divide   % Modulus   ^ Power")
+            operation_symbol = input("Pick an operation: ").strip()
+
+            if operation_symbol not in operations:
+                print("  Invalid operation. Try again.")
+                continue
+
+            try:
+                num2 = float(input("What is the next number?: "))
+            except ValueError:
+                print("  Invalid number. Try again.\n")
+                continue
+
+            try:
+                answer = operations[operation_symbol](num1, num2)
+            except ZeroDivisionError as e:
+                print(f"  Error: {e}\n")
+                continue
+
+            entry = f"{num1} {operation_symbol} {num2} = {answer}"
+            print(f"\n  {entry}\n")
+            history.append(entry)
+
+            print("  [y] Continue with result")
+            print("  [n] New calculation")
+            print("  [h] View history")
+            print("  [c] Clear history")
+            print("  [e] End program")
+            choice = input("\n  Your choice: ").strip().lower()
+
+            if choice == "y":
+                num1 = answer
+            elif choice == "n":
+                should_accumulate = False
+                print("\n" + "-" * 40 + "\n")
+            elif choice == "h":
+                show_history()
+            elif choice == "c":
+                clear_history()
+            elif choice == "e":
+                show_history()
+                print("Goodbye!")
+                return
+            else:
+                print("Invalid choice. Try again.\n")
+
+calculator()
