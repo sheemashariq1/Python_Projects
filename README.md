@@ -1,6 +1,6 @@
 # 100 Days of Code — Python Bootcamp 🐍
 
-Solutions and projects from **Angela Yu's 100 Days of Code: The Complete Python Pro Bootcamp** on Udemy.  
+Solutions and projects from **[Angela Yu's 100 Days of Code: The Complete Python Pro Bootcamp](https://www.udemy.com/course/100-days-of-code/)** on Udemy.
 Pushing day by day — one project at a time, as completed.
 
 ## 👩‍💻 About Me
