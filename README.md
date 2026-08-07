@@ -19,9 +19,9 @@ python-projects/
 
 | Level        | Days     | Status         |
 |--------------|----------|----------------|
-| Basic        | 01 – 40  | ✅ Done
-| Intermediate | 41 – 70  | 🟡 In Progress|
-| Advanced     | 71 – 100 | ⬜ Upcoming   |
+| Basic        | 01 – 14  | ✅ Done
+| Intermediate | 15 – 57  | 🟡 In Progress|
+| Advanced     | 58 – 100 | ⬜ Upcoming   |
 
 ## 🔗 Connect
 - [LinkedIn](https://www.linkedin.com/in/sheema-shariq-436678366)
